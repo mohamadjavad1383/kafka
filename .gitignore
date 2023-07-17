@@ -2,3 +2,4 @@ HELP.md
 target/
 .mvn/
 src/main/resources/data.tsv
+.idea

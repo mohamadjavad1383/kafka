@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.util.Scanner;
 
 @Component
 public class KafkaProducer implements CommandLineRunner{
@@ -20,7 +21,10 @@ public class KafkaProducer implements CommandLineRunner{
 
     @Override
     public void run(String... args) throws Exception {
-        BufferedReader reader = new BufferedReader(new FileReader("src/main/resources/data.tsv"));
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("file name:");
+        String fileName = scanner.nextLine();
+        BufferedReader reader = new BufferedReader(new FileReader(fileName));
 
         String[] fieldNames = reader.readLine().split("\t");
 

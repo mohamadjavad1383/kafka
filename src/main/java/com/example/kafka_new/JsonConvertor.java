@@ -10,61 +10,27 @@ public class JsonConvertor {
     private JSONObject object;
 
     public Actor createActor() {
-        String primaryName = getPrimaryName();
-        Integer birthYear = getBirthYear();
-        Integer deathYear = getDeathYear();
-        String primaryProfession = getPrimaryProfession();
-        String knownForTitles = getKnownForTitles();
+        String primaryName = getStringByName("primaryName");
+        Integer birthYear = getIntByName("birthYear");
+        Integer deathYear = getIntByName("deathYear");
+        String primaryProfession = getStringByName("primaryProfession");
+        String knownForTitles = getStringByName("knownForTitles");
         return new Actor(primaryName, birthYear, deathYear, primaryProfession, knownForTitles);
     }
 
-    private String getKnownForTitles() {
-        String knownForTitles;
+    private String getStringByName(String name) {
         try {
-            knownForTitles = object.getString("knownForTitles");
+            return object.getString(name);
         } catch (JSONException e) {
-            knownForTitles = null;
+            return null;
         }
-        return knownForTitles;
     }
 
-    private String getPrimaryProfession() {
-        String primaryProfession;
+    private Integer getIntByName(String name) {
         try {
-            primaryProfession = object.getString("primaryProfession");
+            return object.getInt(name);
         } catch (JSONException e) {
-            primaryProfession = null;
+            return null;
         }
-        return primaryProfession;
-    }
-
-    private Integer getDeathYear() {
-        Integer deathYear;
-        try {
-            deathYear = object.getInt("deathYear");
-        } catch (JSONException e) {
-            deathYear = null;
-        }
-        return deathYear;
-    }
-
-    private Integer getBirthYear() {
-        Integer birthYear;
-        try {
-            birthYear = object.getInt("birthYear");
-        } catch (JSONException e) {
-            birthYear = null;
-        }
-        return birthYear;
-    }
-
-    private String getPrimaryName() {
-        String primaryName;
-        try {
-            primaryName = object.getString("primaryName");
-        } catch (JSONException e) {
-            primaryName = null;
-        }
-        return primaryName;
     }
 }

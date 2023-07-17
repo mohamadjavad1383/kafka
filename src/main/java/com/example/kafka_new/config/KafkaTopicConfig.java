@@ -10,7 +10,7 @@ import org.springframework.kafka.config.TopicBuilder;
 public class KafkaTopicConfig {
 
     @Bean
-    public NewTopic javadTopic() {
-        return TopicBuilder.name("javad").partitions(5).config(TopicConfig.RETENTION_MS_CONFIG, "3600000").build();
+    public NewTopic actorTopic() {
+        return TopicBuilder.name("actor").partitions(5).config(TopicConfig.RETENTION_MS_CONFIG, "3600000").build();
     }
 }

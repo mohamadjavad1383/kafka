@@ -1,6 +1,5 @@
 package com.example.kafka_new;
 
-import com.example.kafka_new.actor.Actor;
 import com.example.kafka_new.actor.ActorRepository;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -19,16 +18,16 @@ public class KafkaListeners {
 
     @KafkaListener(topics = "actor", groupId = "group-Id")
     private void writeToDB(String data) {
-        db(data);
+        WriteToDataBase(data);
     }
 
     @KafkaListener(topics = "actor", groupId = "group-Id2")
     private void writeToDB2(String data) {
-        db(data);
+        WriteToDataBase(data);
 
     }
 
-    private void db(String data) {
+    private void WriteToDataBase(String data) {
         JSONObject object = null;
         try {
             object = new JSONObject(data);
